@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'gilroy-bold';
+    src: url('../fonts/Gilroy-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'gilroy-regular';
+    src: url('../fonts/Gilroy-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'gilroy-medium';
+    src: url('../fonts/Gilroy-Medium.ttf') format('truetype');
+}
+
+
+:root {
+    --primary-color: #11B8CE;
+    --secondary-color: #FAC102;
+    --text-color: #545454;
+    --button-color: #ED1D7F;
+}
+
+body {
+    font-family: 'gilroy-regular', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link{
+    color: white;
+}
