@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <title>Papernest</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -51,7 +51,7 @@
         <div class="row mt-5">
             <div class="col-12" style="background-color: var(--secondary-color);">
                 <div class="h1  text-white fw-bold p-3">What's Trending?</div>
-                <div class="container pb-5">
+                <div class="container-md pb-5">
                     <div class="row" id="trending"></div>
                 </div>              
             </div>
@@ -82,18 +82,17 @@
         function displayTrendingBooks() {
             const trending = document.getElementById('trending');
 
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 4; i++) {   
                 trending.innerHTML += `
-                <div class="col-12 col-md-3">
+                <div class="col-6 col-md-3">
                     <div class="card border-0" style="background-color: var(--secondary-color);">
                         <div class="card-body">
                             <img class="img-fluid mx-auto d-block" src="assets/img/books/1120_Front.jpg" alt="">
-                            <div class="text-white p-3" style="background-color: var(--primary-color);">
-                                <div class="card-title fw-semibold">Atomic Habits</div>
-                                <div class="card-subtitle">James Clear</div>
-                                <div class="card-text">1</div>
+                            <div class="text-white p-1 p-md-3" style="background-color: var(--primary-color);">
+                                <div class="card-title fw-semibold small">Atomic Habits</div>
+                                <div class="card-subtitle small">James Clear<br>1</div>
                             </div>
-                            <div class="btn text-white rounded-0 w-100 p-3" style="background-color: var(--button-color);">Add to Cart</div>
+                            <div class="btn text-white rounded-0 w-100 p-1 p-md-3" style="background-color: var(--button-color);">Add to Cart</div>
                         </div>      
                     </div>
                 </div>
