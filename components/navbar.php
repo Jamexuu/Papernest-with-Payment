@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12 p-0">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
             <div class="container-fluid d-flex p-0 flex-column justify-content-between">
                 <div class="container d-flex w-100 align-items-center">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -8,11 +8,14 @@
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand fs-1 ms-2" href="#"
+                    <a class="navbar-brand fs-1 ms-2" href="index.php"
                         style="font-family: 'gilroy-bold'; color: var(--secondary-color);">papernest</a>
                     <div class="ms-auto d-flex">
-                        <div class="btn d-none d-md-block"><i class="bi bi-person fs-4"></i>Login/Register</div>
-                        <div class="btn"><i class="bi bi-cart fs-4"></i>Cart</div>
+                        <div class="btn d-none d-md-block" id="login" data-bs-toggle="modal"
+                            data-bs-target="#loginModal">
+                            <i class="bi bi-person fs-4"></i>Login/Register
+                        </div>
+                        <div class="btn" onclick="window.location.href = 'cart.php';"><i class="bi bi-cart fs-4"></i>Cart</div>
                     </div>
                 </div>
                 <div class="collapse navbar-collapse w-100" style="background-color: var(--primary-color);"
@@ -28,11 +31,49 @@
                             <a class="nav-link" href="#">Non-Books</a>
                         </li>
                         <li class="nav-item d-block d-md-none">
-                            <a class="nav-link" href="#">Login/Register</a>
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login/Register</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen-sm-down">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-semibold" id="loginModalLabel">Login/Register</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container p-4 mb-4" style="background-color: var(--secondary-color)">
+                            Welcome to papernest! Please login or register to continue.
+                        </div>
+                        <div class="container">
+                            <form action="">
+                                <label for="email" class="form-label fw-bold">Email</label>
+                                <input type="email" placeholder="Enter your Email" required class="form-control"
+                                    id="email">
+
+                                <label for="password" class="form-label fw-bold mt-3">Password</label>
+                                <input type="password" placeholder="Enter your Password" required class="form-control"
+                                    id="password">
+
+                                <button type="submit" class="btn w-100 mt-5"
+                                    style="background-color: var(--primary-color); color: white;">Login</button>
+                            </form>
+                            <div class="text-center pb-4 border-bottom">
+                                <a href="" class=" text-decoration-none" style="color: var(--primary-color);">Forgot
+                                    password?</a>
+                            </div>
+                            <div class="p p-3">
+                                Don't have an account?
+                                <a href="" class="text-decoration-none" style="color: var(--primary-color);">Register
+                                    now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
