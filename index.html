@@ -27,7 +27,7 @@
                             <a class="navbar-brand fs-1 ms-2" href="#"
                                 style="font-family: 'gilroy-bold'; color: var(--secondary-color);">papernest</a>
                             <div class="ms-auto d-flex">
-                                <div class="btn"><i class="bi bi-person fs-4"></i>Login/Register</div>
+                                <div class="btn d-none d-md-block"><i class="bi bi-person fs-4"></i>Login/Register</div>
                                 <div class="btn"><i class="bi bi-cart fs-4"></i>Cart</div>
                             </div>
                         </div>
@@ -43,6 +43,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Non-Books</a>
                                 </li>
+                                <li class="nav-item d-block d-md-none">
+                                    <a class="nav-link" href="#">Login/Register</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -54,16 +57,20 @@
                 <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="assets/img/carousel/slide1.png" class="d-block w-100" alt="...">
+                            <img src="assets/img/carousel/large-screens/slide1.png" class="d-none d-md-block w-100" alt="...">
+                            <img src="assets/img/carousel/small-screens/slide1.png" class="d-block d-md-none w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="assets/img/carousel/slide2.png" class="d-block w-100" alt="...">
+                            <img src="assets/img/carousel/large-screens/slide2.png" class="d-none d-md-block w-100" alt="...">
+                            <img src="assets/img/carousel/small-screens/slide2.png" class="d-block d-md-none w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="assets/img/carousel/slide3.png" class="d-block w-100" alt="...">
+                            <img src="assets/img/carousel/large-screens/slide3.png" class="d-none d-md-block w-100" alt="...">
+                            <img src="assets/img/carousel/small-screens/slide3.png" class="d-block d-md-none w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="assets/img/carousel/slide4.png" class="d-block w-100" alt="...">
+                            <img src="assets/img/carousel/large-screens/slide4.png" class="d-none d-md-block w-100" alt="...">
+                            <img src="assets/img/carousel/small-screens/slide4.png" class="d-block d-md-none w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
@@ -81,8 +88,10 @@
         </div>
         <div class="row mt-5">
             <div class="col-12" style="background-color: var(--secondary-color);">
-                <div class="h3 text-white fw-bold p-5">What's Trending?</div>
-                <div class="row" id="trending"></div>
+                <div class="h1  text-white fw-bold p-3">What's Trending?</div>
+                <div class="container pb-5">
+                    <div class="row" id="trending"></div>
+                </div>              
             </div>
         </div>
         <div class="row mt-5" style="background-color: var(--primary-color);">
@@ -104,12 +113,12 @@
             <div class="col-12">
                 <div class="row p-3" id="footer-offers"></div>
                 <div class="row bg-secondary text-white p-3">
-                    <div class="col-4 border-end border-white text-center">
+                    <div class="col-8 col-md-4 border-end border-white text-center">
                         <div class="fs-1" style="font-family: 'gilroy-bold';">papernest</div>
                         <div class="p"><br>For inquiries/concerns<br>
-                        get in touch with us at<br><br>papernestbookstore@gmail.com</div>
+                        get in touch with us at<br><br><span class="small">papernestbookstore@gmail.com</span></div>
                     </div>
-                    <div class="col-8">
+                    <div class="col-4 col-md-8">
                         <div class="h6 fw-semibold">FOLLOW OUR SOCIAL MEDIA</div>
                         <i class="bi bi-facebook fs-2 me-2"></i>
                         <i class="bi bi-instagram fs-2 me-2"></i>
@@ -173,12 +182,15 @@
                 footerRow.innerHTML += `
                     <div class="col-4">
                         <div class="row">
-                            <div class="col-4 p-0 text-end"><i class="bi ` + offer.icon + ` h1"></i></div>
-                            <div class="col-8">
-                                <div class="h5 fw-semibold">
+                            <div class="col-12 col-md-4 p-0 text-center text-md-end"><i class="bi ` + offer.icon + ` h1"></i></div>
+                            <div class="col-12 col-md-8">
+                                <div class="h6 d-block d-md-none fw-semibold text-center">
                                     ` + offer.title + `
-                                    <br>` + offer.description + `
                                 </div>
+                                <div class="h5 d-none d-md-block fw-semibold">
+                                    ` + offer.title + `
+                                </div>
+                                <div class="p d-none d-md-block">` + offer.description + `</div>
                             </div>
                         </div>
                     </div>
