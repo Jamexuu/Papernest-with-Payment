@@ -12,46 +12,8 @@
 </head>
 
 <body>
-
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 p-0">
-                <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                    <div class="container-fluid d-flex p-0 flex-column justify-content-between">
-                        <div class="container d-flex w-100 align-items-center">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <a class="navbar-brand fs-1 ms-2" href="#"
-                                style="font-family: 'gilroy-bold'; color: var(--secondary-color);">papernest</a>
-                            <div class="ms-auto d-flex">
-                                <div class="btn d-none d-md-block"><i class="bi bi-person fs-4"></i>Login/Register</div>
-                                <div class="btn"><i class="bi bi-cart fs-4"></i>Cart</div>
-                            </div>
-                        </div>
-                        <div class="collapse navbar-collapse w-100" style="background-color: var(--primary-color);"
-                            id="navbarNavDropdown">
-                            <ul class="navbar-nav ms-auto justify-content-center w-100">
-                                <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="#">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Books</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Non-Books</a>
-                                </li>
-                                <li class="nav-item d-block d-md-none">
-                                    <a class="nav-link" href="#">Login/Register</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
+        <?php include 'components/navbar.php'; ?>
         <div class="row">
             <div class="col-12">
                 <div id="carouselExample" class="carousel slide">
@@ -108,25 +70,8 @@
                 <div class="h5 fw-semibold">Famous Books</div>
                 <div class="p">book 1, book 2, book 3</div>
             </div>
-        </div>
-        <div class="row mt-5 border-top border-secondary">
-            <div class="col-12">
-                <div class="row p-3" id="footer-offers"></div>
-                <div class="row bg-secondary text-white p-3">
-                    <div class="col-8 col-md-4 border-end border-white text-center">
-                        <div class="fs-1" style="font-family: 'gilroy-bold';">papernest</div>
-                        <div class="p"><br>For inquiries/concerns<br>
-                        get in touch with us at<br><br><span class="small">papernestbookstore@gmail.com</span></div>
-                    </div>
-                    <div class="col-4 col-md-8">
-                        <div class="h6 fw-semibold">FOLLOW OUR SOCIAL MEDIA</div>
-                        <i class="bi bi-facebook fs-2 me-2"></i>
-                        <i class="bi bi-instagram fs-2 me-2"></i>
-                        <i class="bi bi-twitter-x fs-2"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>  
+        <?php include 'components/footer.php'; ?>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -156,50 +101,6 @@
             }
         }
         displayTrendingBooks();
-
-        const footerData = [
-            {
-                title: "Free Shipping",
-                description: "Shop P799 and above to get your order delivered for free",
-                icon : "bi-bag"
-            },
-            {
-                title: "Membership Discounts",
-                description: "Card holders enjoy additional 5% off on D-Coded items.",
-                icon : "bi-wallet"
-            },
-            {
-                title: "Cash on Delivery",
-                description: "Cash on Delivery available for orders above P799.",
-                icon : "bi-cash"
-            }
-        ];
-
-        function displayFooterOffers(){
-            const footerRow = document.getElementById('footer-offers');
-
-            footerData.forEach((offer) => {
-                footerRow.innerHTML += `
-                    <div class="col-4">
-                        <div class="row">
-                            <div class="col-12 col-md-4 p-0 text-center text-md-end"><i class="bi ` + offer.icon + ` h1"></i></div>
-                            <div class="col-12 col-md-8">
-                                <div class="h6 d-block d-md-none fw-semibold text-center">
-                                    ` + offer.title + `
-                                </div>
-                                <div class="h5 d-none d-md-block fw-semibold">
-                                    ` + offer.title + `
-                                </div>
-                                <div class="p d-none d-md-block">` + offer.description + `</div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        displayFooterOffers();
-
     </script>
 
 </body>
