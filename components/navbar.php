@@ -1,3 +1,33 @@
+<?php
+require_once 'backend/Login.php';
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $login = new Login();
+    if ($login->isLoggedIn()) {
+        echo '<div class="position-fixed top-0 start-0 w-100 d-flex justify-content-center z-5">
+                <div class="alert alert-warning alert-dismissible fade show shadow-lg mt-5" role="alert" style="min-width:300px;">
+                    You are already logged in!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>';
+    } else {
+        $result = $login->loginUser($_POST['email'], $_POST['password']);
+        if ($result['success']) {
+            $_SESSION['login_success'] = true;
+            header('Location: index.php');
+            exit;
+        } else {
+            echo $result['message'];
+        }
+    }
+}
+
+?>
+
 <div class="row">
     <div class="col-12 p-0">
         <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar">
@@ -15,7 +45,8 @@
                             data-bs-target="#loginModal">
                             <i class="bi bi-person fs-4"></i>Login/Register
                         </div>
-                        <div class="btn" onclick="window.location.href = 'cart.php';"><i class="bi bi-cart fs-4"></i>Cart</div>
+                        <div class="btn" onclick="window.location.href = 'cart.php';"><i
+                                class="bi bi-cart fs-4"></i>Cart</div>
                     </div>
                 </div>
                 <div class="collapse navbar-collapse w-100" style="background-color: var(--primary-color);"
@@ -31,7 +62,8 @@
                             <a class="nav-link" href="#">Non-Books</a>
                         </li>
                         <li class="nav-item d-block d-md-none">
-                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login/Register</a>
+                            <a class="nav-link" href="#" data-bs-toggle="modal"
+                                data-bs-target="#loginModal">Login/Register</a>
                         </li>
                     </ul>
                 </div>
@@ -49,15 +81,20 @@
                             Welcome to papernest! Please login or register to continue.
                         </div>
                         <div class="container">
-                            <form action="">
+                            <form action="" method="post">
                                 <label for="email" class="form-label fw-bold">Email</label>
                                 <input type="email" placeholder="Enter your Email" required class="form-control"
-                                    id="email">
+                                    id="email" name="email">
 
                                 <label for="password" class="form-label fw-bold mt-3">Password</label>
-                                <input type="password" placeholder="Enter your Password" required class="form-control"
-                                    id="password">
-
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="password"
+                                        placeholder="Enter your Password" name="password">
+                                    <button class="btn border bg-light" type="button" id="showPassword"
+                                        onclick="window.showPassword()">
+                                        <i class="bi bi-eye" id="showPasswordIcon"></i>
+                                    </button>
+                                </div>
                                 <button type="submit" class="btn w-100 mt-5"
                                     style="background-color: var(--primary-color); color: white;">Login</button>
                             </form>
@@ -67,8 +104,8 @@
                             </div>
                             <div class="p p-3">
                                 Don't have an account?
-                                <a href="" class="text-decoration-none" style="color: var(--primary-color);">Register
-                                    now</a>
+                                <a href="register.php" class="text-decoration-none"
+                                    style="color: var(--primary-color);">Register now</a>
                             </div>
                         </div>
                     </div>
@@ -77,3 +114,18 @@
         </div>
     </div>
 </div>
+<script>
+    window.showPassword = function () {
+        const passwordInput = document.getElementById('password');
+        const toggleIcon = document.getElementById('showPasswordIcon');
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleIcon.classList.remove('bi-eye');
+            toggleIcon.classList.add('bi-eye-slash');
+        } else {
+            passwordInput.type = "password";
+            toggleIcon.classList.remove('bi-eye-slash');
+            toggleIcon.classList.add('bi-eye');
+        }
+    }
+</script>
