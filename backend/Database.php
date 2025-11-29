@@ -4,7 +4,10 @@ class Database {
     private $db;
     private $dbPath;
     
-    public function __construct($dbPath = 'bookstore.db') {
+    public function __construct($dbPath = null) {
+        if ($dbPath === null) {
+            $dbPath = __DIR__ . '/../papernest.sql';
+        }
         $this->dbPath = $dbPath;
         $this->connect();
     }
@@ -17,7 +20,7 @@ class Database {
             // Return associative arrays by default
             $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            die("Connection failed: " . $e->getMessage());
+            throw new Exception("Connection failed: " . $e->getMessage());
         }
     }
     
@@ -31,16 +34,16 @@ class Database {
             $stmt->execute($params);
             return $stmt;
         } catch (PDOException $e) {
-            die("Query failed: " . $e->getMessage());
+            throw new Exception("Query failed: " . $e->getMessage());
         }
     }
-        public function fetchAll($sql, $params = []) {
+    public function fetchAll($sql, $params = []) {
         try {
             $stmt = $this->db->prepare($sql);
             $stmt->execute($params);
             return $stmt->fetchAll();
         } catch (PDOException $e) {
-            die("Query failed: " . $e->getMessage());
+            throw new Exception("Query failed: " . $e->getMessage());
         }
     }
     
@@ -50,7 +53,7 @@ class Database {
             $stmt->execute($params);
             return $stmt->fetch();
         } catch (PDOException $e) {
-            die("Query failed: " . $e->getMessage());
+            throw new Exception("Query failed: " . $e->getMessage());
         }
     }
     
